@@ -1,15 +1,19 @@
 import tkinter as tk
 from tkinter import messagebox
 
+
 def submit():
     # Collecting the text from the entries
     verbs = verbs_entry.get()
     nouns = nouns_entry.get()
     adjectives = adjectives_entry.get()
-    
+
     # You could process these inputs further here
     # For now, let's just show them in a message box
-    messagebox.showinfo("Input Received", f"Verbs: {verbs}\nNouns: {nouns}\nAdjectives: {adjectives}")
+    messagebox.showinfo(
+        "Input Received",
+        f"Verbs: {verbs}\nNouns: {nouns}\nAdjectives: {adjectives}")
+
 
 # Creating the main window
 root = tk.Tk()

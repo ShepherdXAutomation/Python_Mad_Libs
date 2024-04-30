@@ -1,5 +1,6 @@
 from tkinter import Tk, Label, Button, Entry, Toplevel, Text, Scrollbar, VERTICAL, END
 
+
 def submit_story1_entries(entries, win):
     # Extracting the input from entry fields
     win.geometry("500x800")
@@ -40,25 +41,33 @@ And thus, “The Curious Café” was born, with {name} as its proud owner. Visi
     text_area.grid(row=0, column=0, sticky='nsew')
     scrollbar.grid(row=0, column=1, sticky='ns')
 
-    Button(win, text="Restart", command=lambda: main_menu(win)).grid(row=1, column=0, sticky='nsew')
+    Button(
+        win,
+        text="Restart",
+        command=lambda: main_menu(win)).grid(
+        row=1,
+        column=0,
+        sticky='nsew')
     win.grid_rowconfigure(0, weight=1)
     win.grid_columnconfigure(0, weight=1)
 
     # Insert the story into the text area and disable editing
     text_area.insert(END, story)
     text_area.config(state='disabled')
-def submit_story2_entries(entries, win):
-        # Extracting the input from entry fields
-        name = entries['name'].get()
-        adjective1 = entries['adjective1'].get()
-        noun1 = entries['noun1'].get()
-        verb1 = entries['verb1'].get()
-        noun2 = entries['noun2'].get()
-        verb2 = entries['verb2'].get()
-        adjective2 = entries['adjective2'].get()
 
-        # Generate the story using the inputs
-        story = f'''
+
+def submit_story2_entries(entries, win):
+    # Extracting the input from entry fields
+    name = entries['name'].get()
+    adjective1 = entries['adjective1'].get()
+    noun1 = entries['noun1'].get()
+    verb1 = entries['verb1'].get()
+    noun2 = entries['noun2'].get()
+    verb2 = entries['verb2'].get()
+    adjective2 = entries['adjective2'].get()
+
+    # Generate the story using the inputs
+    story = f'''
         Once upon a time, there was a {adjective1} {noun1} named {name}. {name} had always dreamed of {verb1} and exploring new {noun2}. One day, {name} stumbled upon a magical {noun2} that transported them to a {adjective2} world filled with wonders and adventures.
 
     In this new world, {name} encountered mythical creatures, solved puzzles, and discovered hidden treasures. They made friends with talking animals and helped restore peace to the land. {name} became a hero and was celebrated by the people of the kingdom.
@@ -68,58 +77,82 @@ def submit_story2_entries(entries, win):
     And so, {name} continued to {verb2} and explore, knowing that every day held the potential for a new and exciting adventure.
     '''
 
-        # Clear existing widgets from the window
-        for widget in win.winfo_children():
-            widget.destroy()
+    # Clear existing widgets from the window
+    for widget in win.winfo_children():
+        widget.destroy()
 
-        # Creating a scrollable Text widget to display the story
-        text_area = Text(win, wrap='word', height=20, width=50)
-        scrollbar = Scrollbar(win, command=text_area.yview, orient=VERTICAL)
-        text_area.configure(yscrollcommand=scrollbar.set)
+    # Creating a scrollable Text widget to display the story
+    text_area = Text(win, wrap='word', height=20, width=50)
+    scrollbar = Scrollbar(win, command=text_area.yview, orient=VERTICAL)
+    text_area.configure(yscrollcommand=scrollbar.set)
 
-        text_area.grid(row=0, column=0, sticky='nsew')
-        scrollbar.grid(row=0, column=1, sticky='ns')
+    text_area.grid(row=0, column=0, sticky='nsew')
+    scrollbar.grid(row=0, column=1, sticky='ns')
 
-        Button(win, text="Restart", command=lambda: main_menu(win)).grid(row=1, column=0, sticky='nsew')
-        win.grid_rowconfigure(0, weight=1)
-        win.grid_columnconfigure(0, weight=1)
+    Button(
+        win,
+        text="Restart",
+        command=lambda: main_menu(win)).grid(
+        row=1,
+        column=0,
+        sticky='nsew')
+    win.grid_rowconfigure(0, weight=1)
+    win.grid_columnconfigure(0, weight=1)
 
-        # Insert the story into the text area and disable editing
-        text_area.insert(END, story)
-        text_area.config(state='disabled')
+    # Insert the story into the text area and disable editing
+    text_area.insert(END, story)
+    text_area.config(state='disabled')
+
 
 def Story2(win):
-        # Creating a new window for inputs
-        tl = Toplevel(win)
-        tl.title("Input words for your story")
-        tl.geometry("400x300")
+    # Creating a new window for inputs
+    tl = Toplevel(win)
+    tl.title("Input words for your story")
+    tl.geometry("400x300")
 
-        # Dictionary to hold the entry widgets
-        entries = {}
+    # Dictionary to hold the entry widgets
+    entries = {}
 
-        # Labels and entry fields for each part of speech
-        labels = ['name', 'adjective1', 'noun1', 'verb1', 'noun2', 'verb2', 'adjective2']
-        for idx, label in enumerate(labels):
-            Label(tl, text=f"Enter a {label}:").place(x=10, y=30*idx + 10)
-            entry = Entry(tl, width=25)
-            entry.place(x=150, y=30*idx + 10)
-            entries[label] = entry
+    # Labels and entry fields for each part of speech
+    labels = [
+        'name',
+        'adjective1',
+        'noun1',
+        'verb1',
+        'noun2',
+        'verb2',
+        'adjective2']
+    for idx, label in enumerate(labels):
+        Label(tl, text=f"Enter a {label}:").place(x=10, y=30 * idx + 10)
+        entry = Entry(tl, width=25)
+        entry.place(x=150, y=30 * idx + 10)
+        entries[label] = entry
 
-        # Submit button
-        Button(tl, text="Submit", command=lambda: submit_story2_entries(entries, win)).place(x=150, y=30*len(labels) + 10)
+    # Submit button
+    Button(
+        tl,
+        text="Submit",
+        command=lambda: submit_story2_entries(
+            entries,
+            win)).place(
+        x=150,
+        y=30 *
+        len(labels) +
+        10)
+
 
 def submit_story3_entries(entries, win):
-        # Extracting the input from entry fields
-        name = entries['name'].get()
-        adjective1 = entries['adjective1'].get()
-        noun1 = entries['noun1'].get()
-        verb1 = entries['verb1'].get()
-        noun2 = entries['noun2'].get()
-        verb2 = entries['verb2'].get()
-        adjective2 = entries['adjective2'].get()
+    # Extracting the input from entry fields
+    name = entries['name'].get()
+    adjective1 = entries['adjective1'].get()
+    noun1 = entries['noun1'].get()
+    verb1 = entries['verb1'].get()
+    noun2 = entries['noun2'].get()
+    verb2 = entries['verb2'].get()
+    adjective2 = entries['adjective2'].get()
 
-        # Generate the story using the inputs
-        story = f'''
+    # Generate the story using the inputs
+    story = f'''
         In a land far away, there was a {adjective1} {noun1} named {name}. {name} had a special talent for {verb1} and was admired by everyone in the kingdom. One day, a {noun2} arrived with a message from the king.
 
     The king requested {name}'s help in solving a great mystery that had befallen the kingdom. {name} accepted the challenge and embarked on a thrilling quest to uncover the truth.
@@ -132,45 +165,70 @@ def submit_story3_entries(entries, win):
 
     '''
 
-        # Clear existing widgets from the window
-        for widget in win.winfo_children():
-            widget.destroy()
+    # Clear existing widgets from the window
+    for widget in win.winfo_children():
+        widget.destroy()
 
-        # Creating a scrollable Text widget to display the story
-        text_area = Text(win, wrap='word', height=20, width=50)
-        scrollbar = Scrollbar(win, command=text_area.yview, orient=VERTICAL)
-        text_area.configure(yscrollcommand=scrollbar.set)
+    # Creating a scrollable Text widget to display the story
+    text_area = Text(win, wrap='word', height=20, width=50)
+    scrollbar = Scrollbar(win, command=text_area.yview, orient=VERTICAL)
+    text_area.configure(yscrollcommand=scrollbar.set)
 
-        text_area.grid(row=0, column=0, sticky='nsew')
-        scrollbar.grid(row=0, column=1, sticky='ns')
+    text_area.grid(row=0, column=0, sticky='nsew')
+    scrollbar.grid(row=0, column=1, sticky='ns')
 
-        Button(win, text="Restart", command=lambda: main_menu(win)).grid(row=1, column=0, sticky='nsew')
-        win.grid_rowconfigure(0, weight=1)
-        win.grid_columnconfigure(0, weight=1)
+    Button(
+        win,
+        text="Restart",
+        command=lambda: main_menu(win)).grid(
+        row=1,
+        column=0,
+        sticky='nsew')
+    win.grid_rowconfigure(0, weight=1)
+    win.grid_columnconfigure(0, weight=1)
 
-        # Insert the story into the text area and disable editing
-        text_area.insert(END, story)
-        text_area.config(state='disabled')
+    # Insert the story into the text area and disable editing
+    text_area.insert(END, story)
+    text_area.config(state='disabled')
+
 
 def Story3(win):
-        # Creating a new window for inputs
-        tl = Toplevel(win)
-        tl.title("Input words for your story")
-        tl.geometry("400x300")
+    # Creating a new window for inputs
+    tl = Toplevel(win)
+    tl.title("Input words for your story")
+    tl.geometry("400x300")
 
-        # Dictionary to hold the entry widgets
-        entries = {}
+    # Dictionary to hold the entry widgets
+    entries = {}
 
-        # Labels and entry fields for each part of speech
-        labels = ['name', 'adjective1', 'noun1', 'verb1', 'noun2', 'verb2', 'adjective2']
-        for idx, label in enumerate(labels):
-            Label(tl, text=f"Enter a {label}:").place(x=10, y=30*idx + 10)
-            entry = Entry(tl, width=25)
-            entry.place(x=150, y=30*idx + 10)
-            entries[label] = entry
+    # Labels and entry fields for each part of speech
+    labels = [
+        'name',
+        'adjective1',
+        'noun1',
+        'verb1',
+        'noun2',
+        'verb2',
+        'adjective2']
+    for idx, label in enumerate(labels):
+        Label(tl, text=f"Enter a {label}:").place(x=10, y=30 * idx + 10)
+        entry = Entry(tl, width=25)
+        entry.place(x=150, y=30 * idx + 10)
+        entries[label] = entry
 
-        # Submit button
-        Button(tl, text="Submit", command=lambda: submit_story3_entries(entries, win)).place(x=150, y=30*len(labels) + 10)
+    # Submit button
+    Button(
+        tl,
+        text="Submit",
+        command=lambda: submit_story3_entries(
+            entries,
+            win)).place(
+        x=150,
+        y=30 *
+        len(labels) +
+        10)
+
+
 def Story1(win):
     # Creating a new window for inputs
     tl = Toplevel(win)
@@ -181,26 +239,54 @@ def Story1(win):
     entries = {}
 
     # Labels and entry fields for each part of speech
-    labels = ['name', 'adjective1', 'noun1', 'verb1', 'noun2', 'verb2', 'adjective2']
+    labels = [
+        'name',
+        'adjective1',
+        'noun1',
+        'verb1',
+        'noun2',
+        'verb2',
+        'adjective2']
     for idx, label in enumerate(labels):
-        Label(tl, text=f"Enter a {label}:").place(x=10, y=30*idx + 10)
+        Label(tl, text=f"Enter a {label}:").place(x=10, y=30 * idx + 10)
         entry = Entry(tl, width=25)
-        entry.place(x=150, y=30*idx + 10)
+        entry.place(x=150, y=30 * idx + 10)
         entries[label] = entry
 
     # Submit button
-    Button(tl, text="Submit", command=lambda: submit_story1_entries(entries, win)).place(x=150, y=30*len(labels) + 10)
+    Button(
+        tl,
+        text="Submit",
+        command=lambda: submit_story1_entries(
+            entries,
+            win)).place(
+        x=150,
+        y=30 *
+        len(labels) +
+        10)
+
+
 def main_menu(win):
     win.geometry("350x150")
     for widget in win.winfo_children():
         widget.destroy()
     Label(win, text="Shepherd Automation Mad Libs Generator").place(x=0, y=0)
-    Story1Button = Button(win, text='The Zeypher Island Letters', font=("Times New Roman", 13), command=lambda: Story1(win))
+    Story1Button = Button(
+        win,
+        text='The Zeypher Island Letters',
+        font=(
+            "Times New Roman",
+            13),
+        command=lambda: Story1(win))
     Story1Button.place(x=10, y=30)
-    Story2Button = Button(win, text='The Mysterious Quest', font=("Times New Roman", 13), command=lambda: Story2(win))
+    Story2Button = Button(win, text='The Mysterious Quest', font=(
+        "Times New Roman", 13), command=lambda: Story2(win))
     Story2Button.place(x=10, y=70)
-    Story3Button = Button(win, text='The Heroic Journey', font=("Times New Roman", 13), command=lambda: Story3(win))
+    Story3Button = Button(win, text='The Heroic Journey', font=(
+        "Times New Roman", 13), command=lambda: Story3(win))
     Story3Button.place(x=10, y=110)
+
+
 # Main GUI setup
 Screen = Tk()
 Screen.title("Shepherd Automation Mad Libs Generator")

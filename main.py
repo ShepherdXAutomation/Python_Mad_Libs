@@ -192,23 +192,22 @@ def Story1(win):
 def main_menu(win):
     for widget in win.winfo_children():
         widget.destroy()
-    Label(win, text="Shepherd Automation Mad Libs Generator").place(x=100, y=0)
+    Label(win, text="Shepherd Automation Mad Libs Generator").place(x=0, y=0)
     Story1Button = Button(win, text='The Zeypher Island Letters', font=("Times New Roman", 13), command=lambda: Story1(win))
     Story1Button.place(x=10, y=30)
     Story2Button = Button(win, text='The Mysterious Quest', font=("Times New Roman", 13), command=lambda: Story2(win))
-    Story2Button.place(x=10, y=60)
+    Story2Button.place(x=10, y=70)
     Story3Button = Button(win, text='The Heroic Journey', font=("Times New Roman", 13), command=lambda: Story3(win))
-    Story3Button.place(x=10, y=90)
+    Story3Button.place(x=10, y=110)
 
 # Main GUI setup
 Screen = Tk()
 Screen.title("Shepherd Automation Mad Libs Generator")
-Screen.geometry("500x500")  # Adjusted size to better accommodate the text area
+Screen.geometry("350x150")  # Adjusted size to better accommodate the text area
 main_menu(Screen)
 
 Screen.config(bg="light blue")
 Label(Screen, text="Shepherd Automation Mad Libs Generator").place(x=100, y=0)
-Story1Button = Button(Screen, text='The Zeypher Island Letters', font=("Times New Roman", 13), command=lambda: Story1(Screen))
-Story1Button.place(x=10, y=30)
+
 
 Screen.mainloop()

@@ -2,6 +2,7 @@ from tkinter import Tk, Label, Button, Entry, Toplevel, Text, Scrollbar, VERTICA
 
 def submit_story1_entries(entries, win):
     # Extracting the input from entry fields
+    win.geometry("500x800")
     name = entries['name'].get()
     adjective1 = entries['adjective1'].get()
     noun1 = entries['noun1'].get()
@@ -190,6 +191,7 @@ def Story1(win):
     # Submit button
     Button(tl, text="Submit", command=lambda: submit_story1_entries(entries, win)).place(x=150, y=30*len(labels) + 10)
 def main_menu(win):
+    win.geometry("350x150")
     for widget in win.winfo_children():
         widget.destroy()
     Label(win, text="Shepherd Automation Mad Libs Generator").place(x=0, y=0)
@@ -199,15 +201,11 @@ def main_menu(win):
     Story2Button.place(x=10, y=70)
     Story3Button = Button(win, text='The Heroic Journey', font=("Times New Roman", 13), command=lambda: Story3(win))
     Story3Button.place(x=10, y=110)
-
 # Main GUI setup
 Screen = Tk()
 Screen.title("Shepherd Automation Mad Libs Generator")
 Screen.geometry("350x150")  # Adjusted size to better accommodate the text area
 main_menu(Screen)
-
 Screen.config(bg="light blue")
 Label(Screen, text="Shepherd Automation Mad Libs Generator").place(x=100, y=0)
-
-
 Screen.mainloop()
